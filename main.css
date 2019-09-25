@@ -1,0 +1,138 @@
+:root {
+  --color-gray-darkest: #232323;
+  --color-gray-darker: #535353;
+  --color-gray-dark: #737373;
+  --color-gray: #a0a0a0;
+  --color-gray-light: #fbfbfb;
+  --color-gray-lightest: #fbfbfb;
+
+  /* max width of containers */
+  --measure: 60ch;
+
+  /** scale is 1.5^x. 1.5 * 1.5 * 1.5*... */
+  --ratio: 1.5;
+
+  --line-height: 1.5;
+
+  /** scale calculations */
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+}
+
+* {
+  max-width: var(--measure);
+  line-height: var(--line-height);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-width: none;
+}
+
+a {
+  color: var(--color-gray-darkest);
+  text-decoration: underline;
+}
+
+/** layouts */
+.center {
+  box-sizing: content-box !important;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--s1);
+  padding-right: var(--s1);
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1rem;
+}
+.cover > * {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.cover > :first-child:not(.center) {
+  margin-top: 0;
+}
+.cover > :last-child:not(.center) {
+  margin-bottom: 0;
+}
+.cover > .center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.stack {
+  /* ↓ The space is set as a custom property */
+  --space: 1.5rem;
+}
+.stack > * {
+  /* ↓ Any extant vertical margins are removed */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.stack > * + * {
+  /* ↓ Top margin is only applied to successive elements */
+  margin-top: var(--space);
+}
+
+/** utilities */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+}
+.font-lg {
+  font-size: var(--s1);
+}
+.font-xl {
+  font-size: var(--s2);
+}
+.font-2xl {
+  font-size: var(--s3);
+}
+.font-bold {
+  font-weight: 500;
+}
+.max-width-measure {
+  max-width: var(--measure);
+}
+.max-width-screen {
+  max-width: 100vw;
+}
+.min-height-screen {
+  min-height: 100vh;
+}
+.text-gray {
+  color: var(--color-gray);
+}
+.text-gray-dark {
+  color: var(--color-gray-dark);
+}
+.text-gray-darker {
+  color: var(--color-gray-darker);
+}
+.text-gray-darkest {
+  color: var(--color-gray-darkest);
+}
+.text-gray-light {
+  color: var(--color-gray-light);
+}
+.text-gray-lightest {
+  color: var(--color-gray-lightest);
+}
