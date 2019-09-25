@@ -14,7 +14,7 @@ jobs:
       - uses: chrislennon/action-aws-cli@1.1
       - name: "Deploy to s3"
         run: |
-          aws s3 sync . s://${AWS_S3_BUCKET} --delete
+          aws s3 sync . s3://${AWS_S3_BUCKET} --delete
         env:
           SOURCE_DIR: "."
           AWS_REGION: "us-east-1"
