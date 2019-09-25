@@ -13,9 +13,8 @@ jobs:
       - uses: "actions/checkout@master"
       - uses: chrislennon/action-aws-cli@1.1
       - name: "Deploy to s3"
-        uses: "jakejarvis/s3-sync-action@master"
-        with:
-          args: "--delete"
+        run: |
+          aws s3 sync . s://${AWS_S3_BUCKET} --delete
         env:
           SOURCE_DIR: "."
           AWS_REGION: "us-east-1"
